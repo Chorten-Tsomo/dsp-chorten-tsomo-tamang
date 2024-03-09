@@ -9,17 +9,9 @@ def make_predictions(input_data: pd.DataFrame) -> np.ndarray:
     X_processed = apply_preprocessors(input_data)
 
     # Load model
-    model = joblib.load('../models/model.joblib')
+    model = joblib.load("../models/model.joblib")
 
     # Make predictions
     predictions = model.predict(X_processed)
 
     return predictions
-    
-
-  
-
-
-
-
-    
