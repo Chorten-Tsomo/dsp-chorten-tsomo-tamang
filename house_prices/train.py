@@ -15,11 +15,10 @@ def compute_rmsle(y_test: np.ndarray, y_pred: np.ndarray,
 
 
 def build_model(data: pd.DataFrame) -> dict:
-    # Selected features for the model
-    selected_features = ["LotArea", "YearBuilt", "Neighborhood", "ExterQual"]
+    SELECTED_FEATURES
 
     # Separate data into features (X) and target (y)
-    X = data[selected_features]
+    X = data[SELECTED_FEATURES]
     y = data["SalePrice"]
 
     # Splitting into train and test

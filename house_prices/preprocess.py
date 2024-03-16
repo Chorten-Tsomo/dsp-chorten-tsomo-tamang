@@ -2,20 +2,20 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 import numpy as np
 import joblib
+from house_prices import __init__.py
 
 
 def fit_preprocessors(data: pd.DataFrame) -> None:
-    # Feature Selection
-    continuous_features = ["LotArea", "YearBuilt"]
-    categorical_features = ["Neighborhood", "ExterQual"]
+    CONTINUOUS_FEATURES
+    CATEGORICAL_FEATURES
 
     # Initialize encoders and scalers
     scaler = StandardScaler()
     encoder = OneHotEncoder(handle_unknown="ignore")
 
     # Fit encoders and scalers to training data
-    scaler.fit(data[continuous_features])
-    encoder.fit(data[categorical_features])
+    scaler.fit(data[CONTINUOUS_FEATURES])
+    encoder.fit(data[CATEGORICAL_FEATURES])
 
     # Save the encoders and scalers
     joblib.dump(encoder, "../models/encoder.joblib")
@@ -26,17 +26,15 @@ def apply_preprocessors(data: pd.DataFrame) -> np.ndarray:
     # Load preprocessors
     scaler = joblib.load("../models/scaler.joblib")
     encoder = joblib.load("../models/encoder.joblib")
-
-    # Feature Selection
-    continuous_features = ["LotArea", "YearBuilt"]
-    categorical_features = ["Neighborhood", "ExterQual"]
+    CONTINUOUS_FEATURES
+    CATEGORICAL_FEATURES
 
     # Transform continuous features
-    X_continuous_scaled = scaler.transform(data[continuous_features].copy())
+    X_continuous_scaled = scaler.transform(data[CONTINUOUS_FEATURES].copy())
 
     # One-hot encode categorical features
     X_categorical_encoded = encoder.transform(
-        data[categorical_features].copy()
+        data[CATEGORICAL_FEATURES].copy()
     ).toarray()
 
     # Merge processed features
